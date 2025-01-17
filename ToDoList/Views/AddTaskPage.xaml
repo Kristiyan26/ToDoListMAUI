@@ -2,14 +2,88 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoList.Views.AddTaskPage"
-             Title="AddTaskPage">
-    <VerticalStackLayout>
-        <Label Text="Title:" />
-        <Entry Placeholder="Enter title" Text="{Binding NewTask.Title}" />
+             Title="Add Task">
 
-        <Label Text="Description:" />
-        <Entry Placeholder="Enter description" Text="{Binding NewTask.Description}" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Style for Labels (Title and Description) -->
+            <Style x:Key="TaskLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="#333" />
+            </Style>
 
-        <Button Text="Add" Clicked="OnAddClicked" />
+            <!-- Style for Buttons -->
+            <Style x:Key="ActionButtonStyle" TargetType="Button">
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="BackgroundColor" Value="#4CAF50" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="HeightRequest" Value="40" />
+            </Style>
+
+            <!-- Style for Add Button (Different Color) -->
+            <Style x:Key="AddButtonStyle" TargetType="Button">
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="BackgroundColor" Value="#2196F3" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="HeightRequest" Value="40" />
+            </Style>
+
+            <!-- Style for Entries (Title and Description) -->
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="BackgroundColor" Value="#f5f5f5" />
+                <Setter Property="HeightRequest" Value="40" />
+            </Style>
+
+            <!-- Style for the main stack -->
+            <Style x:Key="MainStackStyle" TargetType="VerticalStackLayout">
+                <Setter Property="Padding" Value="20,10" />
+                <Setter Property="Spacing" Value="15" />
+            </Style>
+
+            <!-- Style for the frame container -->
+            <Style x:Key="TaskContainerStyle" TargetType="Frame">
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="HasShadow" Value="True" />
+            </Style>
+
+            <!-- Style for the border around the entry -->
+            <Style x:Key="EntryFrameStyle" TargetType="Frame">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BorderColor" Value="#ccc" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Style="{StaticResource MainStackStyle}">
+        <!-- Title Entry -->
+        <Frame Style="{StaticResource TaskContainerStyle}">
+            <StackLayout Padding="10">
+                <Label Text="Title:" Style="{StaticResource TaskLabelStyle}" />
+                <Frame Style="{StaticResource EntryFrameStyle}">
+                    <Entry Placeholder="Enter title" Text="{Binding NewTask.Title}" Style="{StaticResource EntryStyle}" />
+                </Frame>
+            </StackLayout>
+        </Frame>
+
+        <!-- Description Entry -->
+        <Frame Style="{StaticResource TaskContainerStyle}">
+            <StackLayout Padding="10">
+                <Label Text="Description:" Style="{StaticResource TaskLabelStyle}" />
+                <Frame Style="{StaticResource EntryFrameStyle}">
+                    <Entry Placeholder="Enter description" Text="{Binding NewTask.Description}" Style="{StaticResource EntryStyle}" />
+                </Frame>
+            </StackLayout>
+        </Frame>
+
+        <!-- Add Button -->
+        <Button Text="Add" Style="{StaticResource AddButtonStyle}" Clicked="OnAddClicked" />
     </VerticalStackLayout>
 </ContentPage>
