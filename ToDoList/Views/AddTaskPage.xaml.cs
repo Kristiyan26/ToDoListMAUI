@@ -26,4 +26,9 @@ public partial class AddTaskPage : ContentPage
         await Navigation.PopAsync();
 
     }
+    private async void OnCancelClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
+
 } 

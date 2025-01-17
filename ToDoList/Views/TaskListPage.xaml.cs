@@ -20,20 +20,7 @@ public partial class TaskListPage : ContentPage
     }
 
  
-    private void OnTaskDoubleTapped(object sender, ItemTappedEventArgs e)
-    {
-        if (e.Item is TaskItem task)
-        {
-            if (task.IsCompleted)
-            {
-                task.IsCompleted = false;
-            }
-            else
-            {
-                task.IsCompleted = true;
-            }
-        }
-    }
+    
 
     private async void OnEditTaskClicked(object sender, EventArgs e)
     {
@@ -43,7 +30,7 @@ public partial class TaskListPage : ContentPage
         await Navigation.PushAsync(editPage);
     }
 
-    private async void AddTask_Clicked(object sender, EventArgs e)
+    private async void OnAddTaskClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new AddTaskPage(_taskItemVM));
     }

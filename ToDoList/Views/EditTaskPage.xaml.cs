@@ -24,4 +24,8 @@ public partial class EditTaskPage : ContentPage
         _itemVM.UpdateTask(Task);
         await Navigation.PopAsync();
     }
+    private async void OnCancelClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

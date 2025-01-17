@@ -5,13 +5,13 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!-- Style for Labels (Title and Description) -->
+
             <Style x:Key="TaskLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="TextColor" Value="#333" />
             </Style>
 
-            <!-- Style for Buttons -->
+
             <Style x:Key="ActionButtonStyle" TargetType="Button">
                 <Setter Property="Padding" Value="10,5" />
                 <Setter Property="BackgroundColor" Value="#4CAF50" />
@@ -20,7 +20,7 @@
                 <Setter Property="HeightRequest" Value="40" />
             </Style>
 
-            <!-- Style for Delete Button -->
+
             <Style x:Key="DeleteButtonStyle" TargetType="Button">
                 <Setter Property="Padding" Value="10,5" />
                 <Setter Property="BackgroundColor" Value="#F44336" />
@@ -29,13 +29,12 @@
                 <Setter Property="HeightRequest" Value="40" />
             </Style>
 
-            <!-- Style for the main stack -->
             <Style x:Key="MainStackStyle" TargetType="StackLayout">
                 <Setter Property="Padding" Value="20,10" />
                 <Setter Property="Spacing" Value="10" />
             </Style>
 
-            <!-- Style for the task container -->
+   
             <Style x:Key="TaskContainerStyle" TargetType="Frame">
                 <Setter Property="Padding" Value="10" />
                 <Setter Property="BackgroundColor" Value="#f5f5f5" />
@@ -47,21 +46,21 @@
     </ContentPage.Resources>
 
     <StackLayout Style="{StaticResource MainStackStyle}">
-        <!-- ListView for displaying tasks -->
+
         <ListView x:Name="TaskListView" ItemsSource="{Binding Tasks}" SeparatorVisibility="Default">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <!-- Wrap each task in a Frame for rounded corners and shadow -->
+
                         <Frame Style="{StaticResource TaskContainerStyle}">
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <!-- Task Title and Description -->
+ 
                                 <VerticalStackLayout Spacing="5" HorizontalOptions="StartAndExpand">
                                     <Label Text="{Binding Title}" Style="{StaticResource TaskLabelStyle}" FontSize="20" FontAttributes="Bold"/>
                                     <Label Text="{Binding Description}" FontSize="14" TextColor="#555" />
                                 </VerticalStackLayout>
 
-                                <!-- Edit and Delete Buttons -->
+
                                 <StackLayout Orientation="Vertical" Spacing="10" VerticalOptions="Center">
                                     <Button Text="Edit" Clicked="OnEditTaskClicked" CommandParameter="{Binding}" Style="{StaticResource ActionButtonStyle}" />
                                     <Button Text="Delete" Clicked="OnDeleteTaskClicked" CommandParameter="{Binding}" Style="{StaticResource DeleteButtonStyle}" />
@@ -74,7 +73,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <!-- Add Task Button -->
-        <Button Text="Add Task" Clicked="AddTask_Clicked" Style="{StaticResource ActionButtonStyle}" />
+        <Button Text="Add Task" Clicked="OnAddTaskClicked" Style="{StaticResource ActionButtonStyle}" />
     </StackLayout>
 </ContentPage>
